@@ -25,7 +25,7 @@ type VKApi struct {
 }
 
 func NewVKApi() *VKApi {
-	return &VKApi{Token: os.Getenv("vk_token"), Version: os.Getenv("api_version")}
+	return &VKApi{Token: os.Getenv("VK_TOKEN"), Version: os.Getenv("API_VERSION")}
 }
 
 func (v *VKApi) SetUrlValues(text string, peer_id int, keyboard keyboard.Keyboard, attach Attachments) url.Values {
@@ -90,7 +90,7 @@ func (v *VKApi) SendMessagePhoto(peer_id int, keyboard keyboard.Keyboard, attach
 
 func (v *VKApi) UploadPhoto() (handler PhotosMessageUploadResponse, err error) {
 	values := url.Values{}
-	values.Set("group_id", os.Getenv("vk_group_id"))
+	values.Set("group_id", os.Getenv("VK_GROUP_ID"))
 	values.Set("access_token", v.Token)
 	values.Set("v", v.Version)
 
