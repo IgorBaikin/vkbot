@@ -1,11 +1,7 @@
 FROM golang:1.19
-
 WORKDIR /app
-COPY go.mod go.sum ./
+COPY . /app
 RUN go mod download
-
-EXPOSE 80/tcp
-
-RUN CGO_ENABLED=0 GOOS=linux go build -o /vk-bot-golang .
-
-CMD ["/vk-bot-golang"]
+RUN go build -o main .
+EXPOSE 8080
+CMD ["/app/main"]
